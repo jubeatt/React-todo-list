@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   #root {
-    width: 500px;
+    max-width: 500px;
     margin: 30px auto 0;
     padding: 30px;
     border: 2px solid rgb(0 0 0 / 10%);

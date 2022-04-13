@@ -6,13 +6,20 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 `;
 
 const Group = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   & > button {
     margin-right: 1em;
+  }
+  @media screen and (max-width: 500px) {
+    & > button {
+      margin-top: 20px;
+    }
   }
 `;
 
@@ -59,6 +66,9 @@ const ClearButton = styled.button`
   background-color: ${({ theme }) => theme.lightRed};
   &:hover {
     background-color: ${({ theme }) => theme.red};
+  }
+  @media screen and (max-width: 500px) {
+    margin-top: 20px;
   }
 `;
 
