@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { defaultTodoConsoleButton } from "../commonStyle";
+import { MEDIA_MOBILE, MEDIA_HOVER } from "../../constants/mediaQuery";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
@@ -7,18 +8,24 @@ const Wrapper = styled.div`
   justify-content: space-between;
   margin-bottom: 30px;
   flex-wrap: wrap;
+  position: relative;
+  ${MEDIA_MOBILE} {
+    padding-top: 50px;
+  }
 `;
 
 const Group = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  & > button {
-    margin-right: 1em;
+  & > button ~ button {
+    margin-left: 1em;
   }
-  @media screen and (max-width: 500px) {
+  ${MEDIA_MOBILE} {
+    & {
+      width: 100%;
+    }
     & > button {
-      margin-top: 20px;
+      flex: 1;
     }
   }
 `;
@@ -64,11 +71,17 @@ const CompletedButton = styled.button`
 const ClearButton = styled.button`
   ${defaultTodoConsoleButton}
   background-color: ${({ theme }) => theme.lightRed};
-  &:hover {
-    background-color: ${({ theme }) => theme.red};
+  ${MEDIA_HOVER} {
+    &:hover {
+      background-color: ${({ theme }) => theme.red};
+    }
   }
-  @media screen and (max-width: 500px) {
-    margin-top: 20px;
+
+  ${MEDIA_MOBILE} {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 `;
 

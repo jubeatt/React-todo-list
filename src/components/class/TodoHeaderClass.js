@@ -29,6 +29,7 @@ const BlueButton = styled.button`
   ${defaultButton}
   border-color: ${({ theme }) => theme.blue};
   color: ${({ theme }) => theme.blue};
+  
   &:hover {
     background-color: ${({ theme }) => theme.blue};
     color: white;

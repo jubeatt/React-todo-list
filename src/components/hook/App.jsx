@@ -6,6 +6,8 @@ import TodoItem from "./TodoItem";
 import TodoConsole from "./TodoConsole";
 import TodoHeader from "./TodoHeader";
 import { useTodos } from "../../custom-hooks/todos";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
 
 const theme = {
@@ -27,8 +29,9 @@ const SwitchDarkModeButton = styled.button`
   right: 20px;
   background-color: ${({ theme }) => theme.darkModeBlack};
   color: ${({ theme }) => theme.darkModeYellow};
-  padding: 8px 16px;
-  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
   ${({ $isDarkMode, theme }) =>
@@ -78,7 +81,7 @@ export default function App() {
           $isDarkMode={isDarkMode}
           onClick={() => setIsDarkMode(!isDarkMode)}
         >
-          {isDarkMode ? "Light mode" : "Dark mode"}
+          {isDarkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
         </SwitchDarkModeButton>
       </ThemeProvider>
     </DarkModeContext.Provider>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { defaultTodoItemButton } from "../commonStyle";
 import { useState, useContext } from "react";
 import { DarkModeContext } from "../DarkModeContext";
+import { MEDIA_HOVER } from "../../constants/mediaQuery";
 import PropTypes from "prop-types";
 
 const TodoHeaderWrapper = styled.div`
@@ -23,7 +24,7 @@ const Input = styled.input`
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.25rem rgb(192 192 192 / 25%);
   }
   ${({ $isDarkMode, theme }) =>
     $isDarkMode &&
@@ -36,22 +37,27 @@ const Input = styled.input`
     `}
 `;
 
-const BlueButton = styled.button`
+const GrayButton = styled.button`
   ${defaultTodoItemButton}
-  border-color: ${({ theme }) => theme.blue};
-  color: ${({ theme }) => theme.blue};
-  &:hover {
-    background-color: ${({ theme }) => theme.blue};
-    color: white;
+  border-color: #c7c7c7;
+  color: #878787;
+  ${MEDIA_HOVER} {
+    &:hover {
+      background-color: #c7c7c7;
+      color: white;
+    }
   }
+
   ${({ $isDarkMode, theme }) =>
     $isDarkMode &&
     `
     border-color: ${theme.darkModeYellow};
     color: ${theme.darkModeYellow};
-    &:hover {
-      background-color: ${theme.darkModeYellow};
-      color: ${theme.darkModeBlack};
+    ${MEDIA_HOVER} {
+      &:hover {
+        background-color: ${theme.darkModeYellow};
+        color: ${theme.darkModeBlack};
+      }
     }
   `}
 `;
@@ -79,7 +85,7 @@ export default function TodoHeader({ handleAddTodo }) {
           placeholder="Type Somthing..."
           required
         ></Input>
-        <BlueButton $isDarkMode={isDarkMode}>新增</BlueButton>
+        <GrayButton $isDarkMode={isDarkMode}>新增</GrayButton>
       </TodoInputBlock>
     </TodoHeaderWrapper>
   );

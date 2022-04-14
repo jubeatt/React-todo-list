@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { MEDIA_HOVER } from "../constants/mediaQuery";
 
 export const defaultTodoItemButton = () => css`
   border-radius: 4px;
@@ -9,10 +10,13 @@ export const defaultTodoItemButton = () => css`
   cursor: pointer;
   flex-shrink: 0;
 
-  &:hover {
-    background-color: black;
-    color: white;
+  ${MEDIA_HOVER} {
+    &:hover {
+      background-color: black;
+      color: white;
+    }
   }
+
 `;
 
 export const defaultTodoConsoleButton = () => css`

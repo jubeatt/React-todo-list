@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 0 20px;
+    padding: 90px 20px;
     transition: all 0.3s;
 
     ${({ $isDarkMode, theme }) =>
@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   
   #root {
     max-width: 500px;
-    margin: 30px auto 0;
+    margin: 0 auto;
     padding: 30px;
     border: 2px solid rgb(0 0 0 / 10%);
     border-radius: 4px;

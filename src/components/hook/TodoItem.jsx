@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useRef, useState, useEffect, useContext } from "react";
 import { defaultTodoItemButton } from "../commonStyle";
 import { DarkModeContext } from "../DarkModeContext";
+import { MEDIA_HOVER } from "../../constants/mediaQuery";
 import PropTypes from "prop-types";
 
 const TodoItemWrapper = styled.div`
@@ -28,9 +29,12 @@ const TodoContent = styled.div`
   ${({ $isDarkMode, theme }) => $isDarkMode && `color: ${theme.darkModeYellow}`}
 `;
 
-const TodoEditor = styled.form``;
+const TodoEditor = styled.form`
+  flex: 1;
+`;
 
 const TodoEditorInput = styled.input`
+  width: 100%;
   border: none;
   padding: 4px 8px;
   border-radius: 4px;
@@ -59,9 +63,12 @@ const GreenButton = styled.button`
   ${defaultTodoItemButton}
   border-color: ${({ theme }) => theme.green};
   color: ${({ theme }) => theme.green};
-  &:hover {
-    background-color: ${({ theme }) => theme.green};
+  ${MEDIA_HOVER} {
+    &:hover {
+      background-color: ${({ theme }) => theme.green};
+    }
   }
+  
   ${({ $isDone, theme }) =>
     $isDone
       ? `
@@ -73,18 +80,24 @@ const RedButton = styled.button`
   ${defaultTodoItemButton}
   border-color: ${({ theme }) => theme.red};
   color: ${({ theme }) => theme.red};
-  &:hover {
-    background-color: ${({ theme }) => theme.red};
+  ${MEDIA_HOVER} {
+    &:hover {
+      background-color: ${({ theme }) => theme.red};
+    }
   }
+  
 `;
 
 const OrangeButton = styled.button`
   ${defaultTodoItemButton}
   border-color: ${({ theme }) => theme.orange};
   color: ${({ theme }) => theme.orange};
-  &:hover {
-    background-color: ${({ theme }) => theme.orange};
+  ${MEDIA_HOVER} {
+    &:hover {
+      background-color: ${({ theme }) => theme.orange};
+    }
   }
+
 `;
 
 export default function TodoItem({
@@ -141,16 +154,20 @@ export default function TodoItem({
         </TodoEditor>
       )}
 
+      {
+        !isOnEdit && (
       <TodoButtonWrapper>
-        <GreenButton
-          $isDone={todo.isDone}
-          onClick={handleButtonClick("changeState")}
-        >
-          {todo.isDone ? "已完成" : "未完成"}
-        </GreenButton>
-        <OrangeButton onClick={handleButtonClick("update")}>編輯</OrangeButton>
-        <RedButton onClick={handleButtonClick("delete")}>刪除</RedButton>
+          <GreenButton
+            $isDone={todo.isDone}
+            onClick={handleButtonClick("changeState")}
+            children={todo.isDone ? "已完成" : "未完成"}
+          />
+          <OrangeButton onClick={handleButtonClick("update")}>編輯</OrangeButton>
+          <RedButton onClick={handleButtonClick("delete")}>刪除</RedButton>
       </TodoButtonWrapper>
+        )
+      }
+      
     </TodoItemWrapper>
   );
 }
