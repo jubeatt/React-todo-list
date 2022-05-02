@@ -12,14 +12,13 @@
 - 標記完成 / 未完成
 - 清空 todo
 - 篩選 todo（全部、進行中、已完成）
-- 自動保留紀錄
+- 自動保留紀錄（localStorage）
 - RWD
 
 另外也順手做了 dark mode，可以參考下面的預覽。
 
 
 ## 網站預覽
-
 
 
 ![preview](preview.gif)
